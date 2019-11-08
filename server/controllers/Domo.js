@@ -2,6 +2,7 @@ const models = require('../models');
 const Domo = models.Domo;
 
 const makeDomo = (req, res) => {
+
     if (!req.body.name || !req.body.age || !req.body.color) {
       return res.status(400).json({ error: 'RAWR! Name, age and color are all required!' });
     }
@@ -29,7 +30,21 @@ const makeDomo = (req, res) => {
     });
   
     return domoPromise;
-  };
+};
+
+const deleteDomo = (req, res) => {
+
+    console.log(`request body: ${req.body}`);
+
+    return Domo.DomoModel.removeById(req.body._id, (err) => {
+      if(err){
+        console.log(`Error: ${error}`)
+        return res.status(400).json({error: 'An error occured'});
+      }
+      return res.status(204).json();
+    });
+}
+
 
 const makerPage = (req, res) => {
     Domo.DomoModel.findByOwner(req.session.account._id, (err, docs) => {
@@ -59,3 +74,4 @@ const getDomos = (request, response) => {
 module.exports.makerPage = makerPage;
 module.exports.getDomos = getDomos;
 module.exports.make = makeDomo;
+module.exports.deleteDomo = deleteDomo;
