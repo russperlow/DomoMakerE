@@ -2,13 +2,14 @@ const models = require('../models');
 const Domo = models.Domo;
 
 const makeDomo = (req, res) => {
-    if (!req.body.name || !req.body.age) {
-      return res.status(400).json({ error: 'RAWR! Both name and age are required' });
+    if (!req.body.name || !req.body.age || !req.body.color) {
+      return res.status(400).json({ error: 'RAWR! Name, age and color are all required!' });
     }
   
     const domoData = {
       name: req.body.name,
       age: req.body.age,
+      color: req.body.color,
       owner: req.session.account._id,
     };
   

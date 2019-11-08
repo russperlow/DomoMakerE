@@ -238,7 +238,7 @@ h3.emptyDomo {
 
 h3.domoName {
     float:left;
-    width: 200px;
+    width: 150px;
     font-weight: bold;
     padding-left: 65px;
     font-size: 1.5em;
@@ -246,6 +246,15 @@ h3.domoName {
 
 h3.domoAge {
     float:right;
+    text-align: left;
+    width: 50px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+}
+
+h3.domoColor{
+    float: right;
     text-align: left;
     width: 100px;
     font-weight: bold;
