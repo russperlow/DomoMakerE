@@ -38,8 +38,8 @@ const deleteDomo = (req, res) => {
 
     return Domo.DomoModel.removeById(req.body._id, (err) => {
       if(err){
-        console.log(`Error: ${error}`)
-        return res.status(400).json({error: 'An error occured'});
+        console.log(`Error: ${err}`)
+        return res.status(400).json({err: 'An error occured'});
       }
       return res.status(204).json();
     });
